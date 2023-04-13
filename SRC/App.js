@@ -11,8 +11,6 @@ if (minutes <10){
 let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 let day = days[date.getDay()];
 return `${day}, ${hours}:${minutes}`;
-
-
 }
 
 
@@ -30,13 +28,15 @@ function displayTemperature(response){
     windElement.innerHTML = Math.round(response.data.wind.speed);
     let dateElement = document.querySelector("#date");
     dateElement.innerHTML = formateDate(response.data.time *1000);
+    let iconElement = document.querySelector("#icon");
+    iconElement.setAttribute ("src", `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`);
    
 }
 
 
 let apiKey="ee030ced13bec32faetaa24oa4e6af48";
-
-let apiURL=`https://api.shecodes.io/weather/v1/current?query=Madrid&key=${apiKey}`;
+let city = "New York"
+let apiURL=`https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
 
 axios.get(apiURL).then(displayTemperature);
 
