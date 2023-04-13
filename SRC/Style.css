@@ -21,6 +21,7 @@ h1 {
     font-weight: 100;
     line-height: 28px;
     margin-bottom: 0;
+    margin-top: 15px;
 }
 .ul {
     margin:2px;
@@ -57,5 +58,10 @@ li:first-letter{
     top: -34px;
 }
 
+.weather-temperature img {
+    margin-right: 5px;
+    height:64px;
+    width:64px;
+}
 
 
