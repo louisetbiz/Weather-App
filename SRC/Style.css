@@ -64,4 +64,16 @@ li:first-letter{
     width:64px;
 }
 
+.weather-temperature  .active {
+color: black;
+cursor: default;
+}
 
+
+.weather-temperature .active:hover {
+   text-decoration:none;
+}
+
+a {
+    text-decoration: none;
+}
