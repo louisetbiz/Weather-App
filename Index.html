@@ -20,14 +20,14 @@
             <div class="weather-app-wrapper">
             <form id="search-form" class="mb-3">
                 <div class="row">
-                    <div class="col-10">
+                    <div class="col-9">
                 <input type="search"
                 placeholder="Type a city..."
                 class="form-control"
                 id="city-input"
                 autocomplete="off"/>
                     </div>
-                    <div class="col-2">
+                    <div class="col-3">
             <input type="submit"
             value="Search"
             class="btn btn-primary w-100"/>
@@ -37,7 +37,7 @@
     <h1 id="city">  
     </h1>
     <ul class="ul">
-        <li>Last updated: <span id="date"></span>
+        <li class="li">Last updated: <span id="date"></span>
         </li>
         <li id="description">            
         </li>
@@ -64,6 +64,27 @@
             </ul>
         </div>
     </div>
+    <hr>
+        <div class="forecast">
+            <div class="row">
+                <div class="col-2">
+                    <div class="day">
+                    Thu
+                    </div>
+                <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png"
+                        alt=""
+                        width="36"/>
+                        <div class="temperature-forecast">
+                       <span class="weather-forecast-max">
+                        <strong>18°</strong> </span>
+                        <span class="weather-forecast-min"> 12°</span>
+                        </div>
+                </div>
+            </div>
+        </div>
+        
+
+    <hr>
         
     <small>
         <a href="https://github.com/louisetbiz/Weather-App"> Open-source code</a>, by Louise Tedesco
