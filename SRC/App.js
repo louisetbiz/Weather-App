@@ -32,8 +32,23 @@ function displayTemperature(response){
     iconElement.setAttribute ("src", `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`);
 
     celsiusTemperature = response.data.temperature.current;
-   
+    
+    getForecast(response.data.city);
 }
+
+
+
+function getForecast(city){
+let apiKey="ee030ced13bec32faetaa24oa4e6af48";
+let apiUrl= `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+
+console.log(apiUrl);
+
+axios.get(apiUrl).then(displayForecast);
+}
+
+displayForecast();
+
 
 function search(city){
 let apiKey="ee030ced13bec32faetaa24oa4e6af48";
@@ -43,11 +58,12 @@ axios.get(apiURL).then(displayTemperature);
 
 }
 
+
 function handleSubmit(event){
     event.preventDefault();
     let cityInputElement = document.querySelector("#city-input");
     search(cityInputElement.value);
-    }
+}
 function displayFahrenheitTemperature(event){
     event.preventDefault();
     let fahrenheitTemperature = (celsiusTemperature*9)/5+32;
@@ -56,7 +72,32 @@ function displayFahrenheitTemperature(event){
     celsiusLink.classList.remove("active");
     fahrenheitLink.classList.add("active");
 }
+function displayForecast() {
 
+    let forecastElement = document.querySelector("#weather-forecast");
+     
+    let forecastHTML = `<div class="row">`;
+    let days = ["Thu", "Fri", "Sat"];
+    days.forEach(function(day) {
+       forecastHTML = forecastHTML +  `   
+                <div class="col-2">
+                    <div class="day">
+                    ${day}
+                    </div>
+                <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png"
+                        alt=""
+                        width="36"/>
+                        <div class="temperature-forecast">
+                       <span class="weather-forecast-max">
+                        <strong>18°</strong> </span>
+                        <span class="weather-forecast-min"> 12°</span>
+                        </div>
+                </div>
+            `;
+});
+    forecastHTML= forecastHTML + `</div>`;
+        forecastElement.innerHTML = forecastHTML;
+}
 function displayCelsiusTemperature(event){
     event.preventDefault();
     let temperatureElement = document.querySelector("#temperature");
